@@ -1,25 +1,39 @@
 import './style/main.scss';
-import yes from './assets/images/yes.jpg'
 
 document.addEventListener('DOMContentLoaded', async function(event) {
     
-    let temps = await callAPI();
+    renderOnline(navigator.onLine);
 
-    let code_temps = temps.forecast.weather
-    console.info('Le code temps renvoyé par l\'API est : ', code_temps);
+    if(navigator.onLine){
+        let temps = await callAPI();
+        console.log(temps)
+    
+        let code_temps = temps.forecast.weather
+        console.info('Le code temps renvoyé par l\'API est : ', code_temps);
+    
+        let weather_string = getWeatherStringFromCode(code_temps);
+        let weather_text = getWeatherTextFromString(weather_string);
+    
+        renderHTML(weather_string, weather_text);
+    } else {
+        // Chargement des données en localStorage
+    }
 
-    let weather_string = getWeatherStringFromCode(code_temps);
-    let weather_text = getWeatherTextFromString(weather_string);
-
-    renderHTML(weather_string, weather_text);
 })
+
+window.addEventListener('offline', renderOnline(false));
+window.addEventListener('online',renderOnline(true));
 
 /*
 Fonction qui appelle l'API meteo-concept
 */
 async function callAPI(){
-    let temps_demain = await fetch('https://api.meteo-concept.com/api/forecast/daily/1?token=daeef69ef0d5bfe7972611164d706a54b24f4b8a9414a0020a35fa14b594f997&insee=76540');
-    console.log(temps_demain)
+    /*
+    [5] TODO: Récupérer la position de l'utilisateur 
+    [5] TODO: Remplacez [lat, lng] dans l'appel API
+    */
+    let temps_demain = await fetch(`https://api.meteo-concept.com/api/forecast/daily/1?token=${process.env.WEATHER_API_KEY}&latLng=[LAT],[LNG]`);
+    //let temps_demain = await fetch(`https://api.meteo-concept.com/api/forecast/daily/1?token=token=${process.env.WEATHER_API_KEY}&insee=76540`);
     return await temps_demain.json();
 }
 
@@ -34,6 +48,8 @@ function getWeatherStringFromCode(weather_code){
         case 0:
             return 'SUNNY'
         case 1: 
+            return 'CLOUDY'
+        case 40: 
             return 'CLOUDY'
         default:
             return 'NOTSET'
@@ -51,7 +67,7 @@ function getWeatherTextFromString(weather_sting){
         case 'SUNNY':
             return 'Yes, it is !'
         case 'CLOUDY':
-            return 'Not really..'
+            return 'Not really...'
         case 'NOTSET':
             return 'Checking status...'
     }
@@ -60,4 +76,30 @@ function getWeatherTextFromString(weather_sting){
 function renderHTML(weather_string, weather_text){
     document.querySelector('#js-bg-container').classList.add(weather_string);
     document.querySelector('#js-text-title').innerText = weather_text;
+}
+
+function renderOnline(isOnline){
+    if(isOnline){
+        document.querySelector('#js-online').innerText = 'Your are online';
+        document.querySelector('#js-online').classList = 'online';
+    } else {
+        document.querySelector('#js-online').innerText = 'Your are offline';
+        document.querySelector('#js-online').classList = 'offline';
+    }
+}
+
+/*
+Check if data in local
+[3] TODO: Vérifier si il y a des données en local
+*/ 
+function checkIfDataInLocal(){
+    
+}
+
+/*
+Get data in local
+[4] TODO: Récupérer les données dans le LocalStorage
+*/ 
+function getDataInLocal(){
+    
 }

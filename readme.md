@@ -1,80 +1,39 @@
-# Mise en place d'un projet web avec Webpack et Jest
+# Les APIs du navigateur
 
 L'objectif de ce projet consiste en la mise en place d'un projet configuré avec Webpack et testé avec Jest.
 
-##Webpack
+## APIs du navigateur
 
-> Webpack est un outil qui est aujourd'hui incontournable dès lors que l'on travaille sur des projets JavaScript complexes. Il va nous permettre de morceler notre code sous forme de module qui seront ensuite fusionnés en un seul fichier par Webpack. Il dispose, en plus, d'un système de "loaders" qui vont permettre d'inclure de nouveaux types de fichiers ou d'appliquer des transformations spécifique (comme une transformation ES2015->ES5).
+> Les APIs WebExtensions en JavaScript peuvent être utilisées au sein des scripts d’arrière plan de l’extension et dans tout autre document livré avec celle-ci. Ceci inclut les pop-ups relatives à une action navigateur ou action de page, barres latérales, pages d’options, ou pages de nouvel onglet. Certaines de ces APIs peuvent également être interrogées par des scripts de contenu de l’extension (voir la liste dans le guide des scripts de contenu).
 
-Source: [GraphikArt](https://www.grafikart.fr/formations/webpack "GraphikArt")
+Source: [MDN Web docs](https://developer.mozilla.org/fr/docs/Mozilla/Add-ons/WebExtensions/API "MDN Web docs")
 
-### 1. Création du projet 
+### 1. L'API "online" / "offline"
 
-**Référence: https://hackernoon.com/lets-start-with-webpack-4-91a0f1dba02e**
--> PARTIE 4
-
-### 2. Configuration
-
-**Référence: https://hackernoon.com/lets-start-with-webpack-4-91a0f1dba02e**
--> PARTIE 5 
+**Référence: https://developer.mozilla.org/en-US/docs/Web/API/NavigatorOnLine/onLine**
 
 
-### 3. Plugin HTML
+### 2. Session Storage
 
-**Référence: https://hackernoon.com/lets-start-with-webpack-4-91a0f1dba02e**
--> PARTIE 6
+**Référence: https://developer.mozilla.org/en-US/docs/Web/API/Window/sessionStorage**
 
+> Comment enregistrer le résultat de la requête en LocalStorage ? 
 
-### 4. Dev Server, rechargement automatique
+### 2. LocalStorage
 
-**Référence: https://hackernoon.com/lets-start-with-webpack-4-91a0f1dba02e**
--> PARTIE 6 (2)
+**Référence: https://developer.mozilla.org/en-US/docs/Web/API/Window/localStorage**
 
+> Comment enregistrer le résultat de la requête en LocalStorage ? 
 
-### 5. Écrire du JS ES6 et babel
+### 3. Cookies
 
-**Référence: https://hackernoon.com/lets-start-with-webpack-4-91a0f1dba02e**
--> PARTIE 7.a
+**Référence: https://developer.mozilla.org/en-US/docs/Web/API/Document/cookie**
 
+> Enregistrez le nombre de visites du visiteur en cookie
 
-### 6. Babel Polyfill
+### 4. Ajout de la géolocalisation
 
-Afin d'utiliser des fonctions avancées comme le fetch, nous utiliserons Babel/Polyfill
+**Référence: https://developer.mozilla.org/en-US/docs/Web/API/Geolocation_API**
 
-**Référence: https://babeljs.io/docs/en/babel-polyfill**
-
-- Ajouter le require en haut du fichier webpack.config.js
-```javascript 
-require("@babel/polyfill");
-```
-
-- Remplacez la configuration "entry"
-
-```javascript 
-entry : {
-	main: [
-		 '@babel/polyfill',
-		'./src/index.js',
-	]
-},
-```
-
-
-### 7. Configuration du CSS
-
-**Référence: https://hackernoon.com/lets-start-with-webpack-4-91a0f1dba02e**
--> Part 8
-
-
-### 7. Configuration de SASS
-
-**Référence: https://hackernoon.com/lets-start-with-webpack-4-91a0f1dba02e**
--> Part 8 : "Convert SCSS to CSS"
-
-
-### 8 Auto-Prefixer CSS
-
-**Référence: https://hackernoon.com/lets-start-with-webpack-4-91a0f1dba02e**
--> Part 8 : "Adding post-css"
-
+> Utilisez la géolocalisation afin de gérer dynamiquement la ville de l'utilisateur 
 
