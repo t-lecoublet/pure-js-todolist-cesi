@@ -1,39 +1,76 @@
-# Les APIs du navigateur
+# Tester son code avec Jest
 
 L'objectif de ce projet consiste en la mise en place d'un projet configuré avec Webpack et testé avec Jest.
 
-## APIs du navigateur
+## Jest
 
-> Les APIs WebExtensions en JavaScript peuvent être utilisées au sein des scripts d’arrière plan de l’extension et dans tout autre document livré avec celle-ci. Ceci inclut les pop-ups relatives à une action navigateur ou action de page, barres latérales, pages d’options, ou pages de nouvel onglet. Certaines de ces APIs peuvent également être interrogées par des scripts de contenu de l’extension (voir la liste dans le guide des scripts de contenu).
+> Jest is a JavaScript test runner, that is, a JavaScript library for creating, running, and structuring tests. Jest is distributed as an NPM package, you can install it in any JavaScript project. Jest is one of the most popular test runner these days and the default choice for Create React App..
 
-Source: [MDN Web docs](https://developer.mozilla.org/fr/docs/Mozilla/Add-ons/WebExtensions/API "MDN Web docs")
+Source: [valentinog.com](https://www.valentinog.com/blog/jest/ "valentinog")
 
-### 1. L'API "online" / "offline"
+### Introduction
 
-**Référence: https://developer.mozilla.org/en-US/docs/Web/API/NavigatorOnLine/onLine**
+Dans le jargon technique, tester signifie vérifier que notre code répond à ce qu'il est censé faire. 
 
+Il y a plusieurs types de tests regroupés en trois catégories 
 
-### 2. Session Storage
+- Tests unitaires (unit testing)
+- Tests d'intégration (integration testing)
+- Tests d'interface (UI testing)
 
-**Référence: https://developer.mozilla.org/en-US/docs/Web/API/Window/sessionStorage**
+**Référence: https://www.valentinog.com/blog/jest/**
 
-> Comment enregistrer le résultat de la requête en LocalStorage ? 
+### Paramétrer le projet 
 
-### 2. LocalStorage
+`$ npm i jest --save-dev`
 
-**Référence: https://developer.mozilla.org/en-US/docs/Web/API/Window/localStorage**
+Ajoutons aussi un script dans notre package.json 
 
-> Comment enregistrer le résultat de la requête en LocalStorage ? 
+```javascript
+  "scripts": {
+    "test": "jest"
+  },
+```
 
-### 3. Cookies
+Par défaut Jest peut comprendre les fichiers .test 
 
-**Référence: https://developer.mozilla.org/en-US/docs/Web/API/Document/cookie**
+Nous crérons également un dossier "tests"
 
-> Enregistrez le nombre de visites du visiteur en cookie
+> Voir fichier tests/demo.test.js
 
-### 4. Ajout de la géolocalisation
+### Lancer un test 
+Pour lancer un test nous utilisons la commande 
 
-**Référence: https://developer.mozilla.org/en-US/docs/Web/API/Geolocation_API**
+`$ npm run test`
+`$ npx test`
 
-> Utilisez la géolocalisation afin de gérer dynamiquement la ville de l'utilisateur 
+### Support de babel 
 
+> Ajout du fichier .babelrc 
+
+```
+ {
+   "presets": ['@babel/preset-env'] 
+
+ }
+ ```
+
+ ### Extension VS CODE 
+
+ > Téléchargez l'extension VS Code "Jest"
+
+ ### Le code coverage
+
+Le code coverage représente le pourcentage de notre code qui est testé.
+
+Ajouter le code suivant à votre package.json et observer le dossier "coverage"
+
+```
+  "jest": {
+    "collectCoverage": true,
+    "coverageReporters": ["html"]
+  }
+```
+
+ ### Atteindre 100% de code coverage ? Facile ? 
+ > A vous de jouez, essayez d'atteindre 100% de code coverage en ajoutant les tests des fonctions dans notre demo.test.html
