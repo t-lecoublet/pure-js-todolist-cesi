@@ -9,7 +9,7 @@ describe('Démonstration calculatrice', function (){
     // Démonstration basique
     it('sould add', function (){
         const a = 2 + 1;
-        expect(a).toBe(3);
+        expect(a).not.toBe(1);
     })
 
     // Concurrent permet lancer simultanément des tests

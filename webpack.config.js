@@ -26,7 +26,7 @@ module.exports = {
             inject: true,
             minify: {
                 removeComments: true,
-                collapseWhitespace: false
+                collapseWhitespace: true
             }
         }),
         new MiniCssExtractPlugin({

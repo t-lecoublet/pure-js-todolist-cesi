@@ -1,0 +1,26 @@
+{
+    "src_folders" : ["tests__e2e"],
+  
+    "webdriver" : {
+      "start_process": true,
+      "server_path": "node_modules/.bin/chromedriver",
+      "port": 9520
+    },
+  
+    "test_settings" : {
+      "default" : {
+        "desiredCapabilities": {
+          "browserName": "chrome",
+          "chromeOptions" : {
+            "args": [
+              "no-sandbox",
+              "disable-gpu",
+              "ignore-certificate-errors"
+            ]
+          },
+          "args" : ["disable-web-security", "ignore-certificate-errors"]
+        }
+      }
+    }
+  }
+  

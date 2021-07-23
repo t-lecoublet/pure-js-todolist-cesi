@@ -24,6 +24,8 @@ function getWeatherStringFromCode (weather_code) {
             return 'SUNNY'
         case 1: 
             return 'CLOUDY'
+        case 3: 
+            return 'UNKNOWN'
         case 40: 
             return 'CLOUDY'
         default:
@@ -42,7 +44,7 @@ function getWeatherTextFromString(weather_sting){
         case 'SUNNY':
             return 'Yes, it is !'
         case 'CLOUDY':
-            return 'Not really...'
+            return 'Not reallo...'
         case 'NOTSET':
             return 'Checking status...'
     }
@@ -62,28 +64,10 @@ function renderOnline(isOnline){
         document.querySelector('#js-online').classList = 'offline';
     }
 }
-
-/*
-Check if data in local
-[3] TODO: Vérifier si il y a des données en local
-*/ 
-function checkIfDataInLocal(){
-    
-}
-
-/*
-Get data in local
-[4] TODO: Récupérer les données dans le LocalStorage
-*/ 
-function getDataInLocal(){
-    
-}
 export {
     callAPI, 
     getWeatherStringFromCode, 
     getWeatherTextFromString,
     renderHTML,
     renderOnline, 
-    getDataInLocal, 
-    checkIfDataInLocal, 
 }
