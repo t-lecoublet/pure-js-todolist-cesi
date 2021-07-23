@@ -17,8 +17,7 @@
               "disable-gpu",
               "ignore-certificate-errors"
             ]
-          },
-          "args" : ["disable-web-security", "ignore-certificate-errors"]
+          }
         }
       }
     }
