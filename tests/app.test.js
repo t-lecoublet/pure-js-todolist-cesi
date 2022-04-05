@@ -82,7 +82,7 @@ describe('DOM/V2', () => {
         expect(document.getElementById('js-text-title').innerText).toEqual('RENDER')
      })
 })
-
+/*
 describe('API', () => {
     it('shoult be a 200', () => {
 
@@ -94,4 +94,4 @@ describe('API', () => {
         expect(fetch).toHaveBeenCalledTimes(1);
         expect(typeof weather).toBe('object')
     })
-})
+})*/

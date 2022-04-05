@@ -4,3 +4,4 @@ coverage
 tests__inactive
 chromedriver.log
 tests_output
+logs
