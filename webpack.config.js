@@ -8,6 +8,7 @@ const CopyWebpackPlugin = require('copy-webpack-plugin');
 const Dotenv = require('dotenv-webpack');
 
 module.exports = {
+    mode: 'development',
     entry : {
         main: [
             '@babel/polyfill',
@@ -26,16 +27,20 @@ module.exports = {
             inject: true,
             minify: {
                 removeComments: true,
-                collapseWhitespace: true
+                collapseWhitespace: false
             }
         }),
         new MiniCssExtractPlugin({
             filename: 'style.css'
         }),
-        new CopyWebpackPlugin([{
-            from:'./src/assets/images',
-            to:'assets/images'   
-        }]),
+        new CopyWebpackPlugin(
+            { 
+                patterns: [
+                    {
+                        from:'./src/assets/images',
+                        to:'assets/images'   
+                    }
+                ]}),
         new Dotenv()
     ],
     module: {

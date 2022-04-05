@@ -1,23 +1,16 @@
-.row{
-    display: flex;
-    flex-wrap: wrap;
-  }
-  .col{
-    width: 75px;
-    height: 75px;
-    text-align: center;
-    background-color: #f44336;
-    box-sizing: border-box;
-    padding: 10px;
-    margin: 10px;
-    color: white;
-  }
-  .fizz{
-    background-color: #4CAF50;
-  }
-  .buzz{
-    background-color: #607d8b;
-  }
-  .fizz.buzz{
-    background-color: #ff9800;
-  }
+#todoList label{
+  width: 80%;
+}
+#todoList li{
+  list-style-type: none;
+}
+.completed{
+
+}
+.uncompleted label{
+  color: #afa7a7;
+  text-decoration: line-through;
+}
+#todoList .btn{
+  margin-left: 10px;
+}

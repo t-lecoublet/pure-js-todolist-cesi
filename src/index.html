@@ -6,12 +6,22 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title> <%= htmlWebpackPlugin.options.title %> </title>
-
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 </head>
 <body>
-    <h1>Rappel des règles du Fizz Buzz :</h1>
-    <p>On affiche les nombres de 1 à 100, si divisible par 3, on affiche Fizz, si divisible par 5 on affiche Buzz, Fizz Buzz pour les 2</p>
-    <div id="content" class="row"></div>
+    
+    <div class="container">
+    <h2 class="text-center">Todo List App</h2>
 
+        <div class="form-group">
+            <label for="itemInput">Add Item</label>
+            <input type="text" class="form-control" name="" id="itemInput" >
+        </div>
+            <button id="addButton" class="btn btn-primary">Add To List</button>
+            <button id="clearButton" class="btn btn-danger">Clear Todo List</button>
+    <h3>Todo List</h3>
+    <ul id="todoList"></ul>
+
+</div>
 </body>
 </html>
