@@ -1,5 +1,4 @@
-import { returnI, fizzbuzz, getClassFromResult } from "../src/fizzbuzz";
-
+import {fizzbuzz, getClassFromResult} from '../src/fizzbuzz.js'
 describe('FizzBuzz', () => {  
     
     let table = [];
