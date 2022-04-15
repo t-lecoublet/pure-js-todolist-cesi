@@ -1,4 +1,4 @@
-import './style/main.scss';
+import './style/main.css';
 //Todo list app by Afolabi Sheriff
 //features
 //store in localstorage of browser
