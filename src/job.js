@@ -3,7 +3,7 @@
 let listArray = [];
 
 
-function listItemObj(content, status) {
+function listItemObj(content, status) {//
     this.content = content ?? '';
     this.status = status ?? 'incomplete';
 }
@@ -33,29 +33,29 @@ function removeItem(data){
     }
 }
 
-let refreshLocal = function(){
+let refreshLocal = function(){//
     let todos = listArray;
     localStorage.removeItem('todoList');
     localStorage.setItem('todoList', JSON.stringify(todos));
 }
 
-function addToList(newItem){
+function addToList(newItem){//
     listArray.push(newItem);
     //add to the local storage
     refreshLocal();
 }
 
-function clearList(){
+function clearList(){//66
     listArray = [];
     localStorage.removeItem('todoList');
 }
 
 
-function getToDoList(){
+function getToDoList(){//
     return localStorage.getItem('todoList');
 }
 
-function setListArray(list){listArray = list}
+function setListArray(list){listArray = list}//
 
 export {
     listArray,

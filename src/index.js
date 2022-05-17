@@ -85,7 +85,7 @@ let createItemDom = function(text,status){
     listItem.appendChild(itemLabel);
     listItem.appendChild(itemCompBtn);
     listItem.appendChild(itemIncompBtn);
-
+    console.log(listItem)
     return listItem;
 }
 
