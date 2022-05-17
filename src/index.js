@@ -1,83 +1,70 @@
 import './style/main.css';
+import * as job from './job';
 //Todo list app by Afolabi Sheriff
 //features
 //store in localstorage of browser
 //delete list items
 
 
-var addButton = document.getElementById('addButton');
-var addInput = document.getElementById('itemInput');
-var todoList = document.getElementById('todoList');
-var listArray = [];
+let addButton = document.getElementById('addButton');
+let addInput = document.getElementById('itemInput');
+let todoList = document.getElementById('todoList');
 //declare addToList function
 
-function listItemObj(content, status) {
-    this.content = '';
-    this.status = 'incomplete';
-}
-var changeToComp = function(){
-    var parent = this.parentElement;
+
+let changeToComp = function(){
+
+    let parent = this.parentElement;
     console.log('Changed to complete');
     parent.className = 'uncompleted well';
     this.innerText = 'Incomplete';
     this.removeEventListener('click',changeToComp);
     this.addEventListener('click',changeToInComp);
-    changeListArray(parent.firstChild.innerText,'complete');
+
+
+    job.changeListArray(parent.firstChild.innerText,'complete');
 
 }
 
-var changeToInComp = function(){
-    var parent = this.parentElement;
+let changeToInComp = function(){
+
+    let parent = this.parentElement;
     console.log('Changed to incomplete');
     parent.className = 'completed well';
     this.innerText = 'Complete';
     this.removeEventListener('click',changeToInComp);
     this.addEventListener('click',changeToComp);
 
-    changeListArray(parent.firstChild.innerText,'incomplete');
+
+    job.changeListArray(parent.firstChild.innerText,'incomplete');
 
 }
 
-var removeItem = function(){
-    var parent = this.parentElement.parentElement;
+let removeItem = function(){
+
+    let parent = this.parentElement.parentElement;
     parent.removeChild(this.parentElement);
 
-    var data = this.parentElement.firstChild.innerText;
-    for(var i=0; i < listArray.length; i++){
+    let data = this.parentElement.firstChild.innerText;
 
-        if(listArray[i].content == data){
-            listArray.splice(i,1);
-            refreshLocal();
-            break;
-        }
-    }
+    
+    job.removeItem(data);
 
 
 }
 
-//function to change the todo list array
-var changeListArray = function(data,status){
 
-    for(var i=0; i < listArray.length; i++){
-
-        if(listArray[i].content == data){
-            listArray[i].status = status;
-            refreshLocal();
-            break;
-        }
-    }
-}
 
 //function to chage the dom of the list of todo list
-var createItemDom = function(text,status){
+let createItemDom = function(text,status){
 
-    var listItem = document.createElement('li');
+    let listItem = document.createElement('li');
 
-    var itemLabel = document.createElement('label');
+    let itemLabel = document.createElement('label');
 
-    var itemCompBtn = document.createElement('button');
+    let itemCompBtn = document.createElement('button');
 
-    var itemIncompBtn = document.createElement('button');
+    let itemIncompBtn = document.createElement('button');
 
     listItem.className = (status == 'incomplete')?'completed well':'uncompleted well';
 
@@ -102,43 +89,42 @@ var createItemDom = function(text,status){
     return listItem;
 }
 
-var refreshLocal = function(){
-    var todos = listArray;
-    localStorage.removeItem('todoList');
-    localStorage.setItem('todoList', JSON.stringify(todos));
-}
 
-var addToList = function(){
-    var newItem = new listItemObj();
+
+let addToList = function(){
+    let newItem = new job.listItemObj();
     newItem.content = addInput.value;
-    listArray.push(newItem);
+
+
+    job.listArray.push(newItem);
     //add to the local storage
-    refreshLocal();
+    job.refreshLocal();
+    
     //change the dom
-    var item = createItemDom(addInput.value,'incomplete');
+    let item = createItemDom(addInput.value,'incomplete');
     todoList.appendChild(item);
     addInput.value = '';
 }
 
 //function to clear todo list array
-var clearList = function(){
-    listArray = [];
-    localStorage.removeItem('todoList');
+let clearList = function(){
+    job.clearList();
     todoList.innerHTML = '';
 
 }
 
 window.onload = function(){
-    var list = localStorage.getItem('todoList');
+    let list = job.getToDoList();
 
     if (list != null) {
-        todos = JSON.parse(list);
-        listArray = todos;
+        console.log('test', list)
+        let todos = JSON.parse(list);
+        job.setListArray(todos);
 
-        for(var i=0; i<listArray.length;i++){
-            var data = listArray[i].content;
+        for(let i=0; i<job.listArray.length;i++){
+            let data = job.listArray[i].content;
 
-            var item = createItemDom(data,listArray[i].status);
+            let item = createItemDom(data,job.listArray[i].status);
             todoList.appendChild(item);
         }
 
